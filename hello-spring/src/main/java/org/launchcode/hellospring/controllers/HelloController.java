@@ -21,10 +21,17 @@ public class HelloController {
         return "Goodbye, Spring!";
     }
 
-    // Handles request of the form /hello?name=LaunchCode
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "hello")
-    public String helloWithQueryParam(@RequestParam String name) {
-        return "Hello, " + name + "!";
+//    // Handles request of the form /hello?name=LaunchCode
+//    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "hello")
+//    public String helloWithQueryParam(@RequestParam String name) {
+//        return "Hello, " + name + "!";
+//    }
+
+
+    @RequestMapping(value="hello", method = RequestMethod.POST)
+    @ResponseBody
+    public String helloPost(@RequestParam String name, @RequestParam String language) {
+         return createMessage(name, language);
     }
 
     // Handles requests of the form /hello/LaunchCode
